@@ -1,0 +1,161 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-hover: #45a049;
+    --background: #f0f0f0;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --card-shadow-hover: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* Grid sistema - CSS Grid bilan */
+.colors-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.color-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
+}
+
+@media (hover: hover) {
+    .color-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+    }
+}
+
+.color-preview {
+    height: 200px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.color-preview .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+    .color-preview:hover .overlay {
+        opacity: 1;
+    }
+}
+
+.btn {
+    background: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    will-change: transform;
+}
+
+@media (hover: hover) {
+    .btn:hover {
+        background: #f0f0f0;
+        transform: scale(1.1);
+    }
+}
+
+.btn .bx {font-size: 22px;
+}
+
+.color-info {
+    padding: 1.2rem;
+    text-align: center;
+    background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.color-hex {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.generate-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+@media (hover: hover) {
+    .generate-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+    }
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
